@@ -21,8 +21,10 @@
     "test:e2e": "npm run test:e2e --workspace=@framecraft/web",
     "lint": "npm run lint --workspaces --if-present"
   },
-  "devDependencies": {
-    "concurrently": "^9.1.2",
+  "dependencies": {
     "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }

@@ -3,14 +3,16 @@ services:
     name: framecraft-api
     runtime: node
     plan: free
-    buildCommand: npm install && npm run build:api
-    startCommand: npm run start:api
+    buildCommand: npm install --include=dev && npm run build:api
+    startCommand: npm run prisma:push && npm run prisma:seed && npm run start:api
     healthCheckPath: /api/v1/health
     envVars:
       - key: NODE_ENV
         value: production
       - key: PORT
         value: 10000
+      - key: NPM_CONFIG_PRODUCTION
+        value: "false"
       - key: DATABASE_URL
         fromDatabase:
           name: framecraft-db
