@@ -1,0 +1,151 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum ExportFormat {
+  JPG
+  PNG
+  PDF
+}
+
+enum ExportStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+model User {
+  id           String          @id @default(uuid())
+  email        String          @unique
+  passwordHash String
+  name         String
+  role         Role            @default(USER)
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  sessions     Session[]
+  projects     Project[]
+  assets       UploadedAsset[]
+  exportJobs   ExportJob[]
+
+  @@map("users")
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("sessions")
+}
+
+model Template {
+  id           String    @id @default(uuid())
+  slug         String    @unique
+  name         String
+  category     String
+  description  String
+  aspectRatio  String
+  canvasWidth  Int
+  canvasHeight Int
+  photoCount   Int
+  templateJson Json
+  version      Int       @default(1)
+  isPublic     Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  projects     Project[]
+
+  @@index([category])
+  @@map("templates")
+}
+
+model Project {
+  id           String         @id @default(uuid())
+  userId       String?
+  user         User?          @relation(fields: [userId], references: [id], onDelete: SetNull)
+  templateId   String?
+  template     Template?      @relation(fields: [templateId], references: [id], onDelete: SetNull)
+  title        String
+  category     String
+  canvasWidth  Int
+  canvasHeight Int
+  aspectRatio  String
+  designJson   Json           // Full versioned ProjectData
+  thumbnailUrl String?
+  isPublic     Boolean        @default(false)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  projectAssets ProjectAsset[]
+  exportJobs   ExportJob[]
+
+  @@index([userId])
+  @@map("projects")
+}
+
+model UploadedAsset {
+  id           String         @id @default(uuid())
+  userId       String?
+  user         User?          @relation(fields: [userId], references: [id], onDelete: SetNull)
+  originalName String
+  mimeType     String
+  sizeBytes    Int
+  width        Int?
+  height       Int?
+  storagePath  String
+  publicUrl    String
+  thumbnailUrl String?
+  createdAt    DateTime       @default(now())
+  projectAssets ProjectAsset[]
+
+  @@index([userId])
+  @@map("uploaded_assets")
+}
+
+model ProjectAsset {
+  id        String        @id @default(uuid())
+  projectId String
+  project   Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  assetId   String
+  asset     UploadedAsset @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  slotId    String
+  createdAt DateTime      @default(now())
+
+  @@unique([projectId, slotId])
+  @@map("project_assets")
+}
+
+model ExportJob {
+  id           String       @id @default(uuid())
+  projectId    String
+  project      Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  userId       String?
+  user         User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+  format       ExportFormat
+  preset       String
+  scaleFactor  Float        @default(1.0)
+  status       ExportStatus @default(PENDING)
+  downloadUrl  String?
+  fileSize     Int?
+  errorMessage String?
+  createdAt    DateTime     @default(now())
+  completedAt  DateTime?
+
+  @@index([projectId])
+  @@index([userId])
+  @@map("export_jobs")
+}

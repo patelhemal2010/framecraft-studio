@@ -1,0 +1,90 @@
+import { TemplateDefinition } from '../../types/template.js';
+import { SAMPLE_IMAGES } from '../sample-images.js';
+
+export const BLACK_AND_WHITE_TEMPLATES: TemplateDefinition[] = [
+  {
+    id: 'black-white-high-contrast-film',
+    slug: 'high-contrast-bnw-film-noir',
+    name: 'High-Contrast Film Noir 4-Photo Frame',
+    category: 'black-and-white',
+    description: 'Moody film noir monochrome layout with dramatic shadows, heavy black borders, and cinematic typography.',
+    aspectRatio: '4:5',
+    canvasWidth: 2400,
+    canvasHeight: 3000,
+    supportedPrintSizes: ['8x10"', '16x20"', 'A4'],
+    photoCount: 4,
+    tags: ['black-and-white', 'monochrome', 'film-noir', 'cinematic', 'high-contrast'],
+    version: 1,
+    background: {
+      type: 'color',
+      color: '#09090b',
+    },
+    photoSlots: [
+      { id: 'bw1', label: 'Shadows', x: 0.08, y: 0.14, width: 0.40, height: 0.34, shape: 'rectangle', borderWidth: 2, borderColor: '#3f3f46', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.bw[0] },
+      { id: 'bw2', label: 'Silhouettes', x: 0.52, y: 0.14, width: 0.40, height: 0.34, shape: 'rectangle', borderWidth: 2, borderColor: '#3f3f46', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.bw[1] },
+      { id: 'bw3', label: 'Architecture', x: 0.08, y: 0.52, width: 0.40, height: 0.34, shape: 'rectangle', borderWidth: 2, borderColor: '#3f3f46', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.bw[2] },
+      { id: 'bw4', label: 'Expression', x: 0.52, y: 0.52, width: 0.40, height: 0.34, shape: 'rectangle', borderWidth: 2, borderColor: '#3f3f46', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.bw[3] },
+    ],
+    textElements: [
+      { id: 't1', x: 0.5, y: 0.05, text: 'NOIR ET BLANC • VOL. I', fontFamily: 'Montserrat', fontSize: 26, fontWeight: '700', fill: '#f4f4f5', align: 'center', letterSpacing: 8, zIndex: 3 },
+      { id: 't2', x: 0.5, y: 0.92, text: 'LIGHT AND SHADOW ARE THE LANGUAGE OF SOUL', fontFamily: 'Montserrat', fontSize: 18, fill: '#a1a1aa', align: 'center', letterSpacing: 4, zIndex: 3 },
+    ],
+  },
+  {
+    id: 'black-white-vintage-darkroom',
+    slug: 'vintage-darkroom-monochrome-strip',
+    name: 'Vintage Darkroom Contact Sheet Collage',
+    category: 'black-and-white',
+    description: 'Authentic 35mm photographic contact sheet replica with 6 frames, frame markers, and red grease-pencil notes.',
+    aspectRatio: '4:5',
+    canvasWidth: 2400,
+    canvasHeight: 3000,
+    supportedPrintSizes: ['8x10"', '16x20"', 'A4'],
+    photoCount: 6,
+    tags: ['black-and-white', 'contact-sheet', 'darkroom', 'vintage', '35mm'],
+    version: 1,
+    background: {
+      type: 'color',
+      color: '#18181b',
+    },
+    photoSlots: [
+      { id: 'c1', label: 'Frame 21A', x: 0.10, y: 0.14, width: 0.36, height: 0.22, shape: 'rectangle', borderWidth: 1, borderColor: '#52525b', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.bw[4] },
+      { id: 'c2', label: 'Frame 22A', x: 0.54, y: 0.14, width: 0.36, height: 0.22, shape: 'rectangle', borderWidth: 1, borderColor: '#52525b', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.bw[5] },
+      { id: 'c3', label: 'Frame 23A', x: 0.10, y: 0.40, width: 0.36, height: 0.22, shape: 'rectangle', borderWidth: 1, borderColor: '#52525b', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.bw[6] },
+      { id: 'c4', label: 'Frame 24A', x: 0.54, y: 0.40, width: 0.36, height: 0.22, shape: 'rectangle', borderWidth: 1, borderColor: '#52525b', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.bw[7] },
+      { id: 'c5', label: 'Frame 25A', x: 0.10, y: 0.66, width: 0.36, height: 0.22, shape: 'rectangle', borderWidth: 1, borderColor: '#52525b', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.bw[8] },
+      { id: 'c6', label: 'Frame 26A', x: 0.54, y: 0.66, width: 0.36, height: 0.22, shape: 'rectangle', borderWidth: 1, borderColor: '#52525b', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.bw[9] },
+    ],
+    textElements: [
+      { id: 't1', x: 0.5, y: 0.05, text: 'ILFORD HP5 PLUS • CONTACT PROOF', fontFamily: 'Montserrat', fontSize: 24, fontWeight: '700', fill: '#f4f4f5', align: 'center', letterSpacing: 6, zIndex: 3 },
+      { id: 't2', x: 0.5, y: 0.94, text: 'SILVER GELATIN DEVELOPING • FRAME ARCHIVE', fontFamily: 'Montserrat', fontSize: 16, fill: '#71717a', align: 'center', letterSpacing: 4, zIndex: 3 },
+    ],
+  },
+  {
+    id: 'black-white-square-contact-triptych',
+    slug: 'monochrome-square-triptych-strip',
+    name: 'Monochrome Square Triptych Strip',
+    category: 'black-and-white',
+    description: 'Three equal square monochrome frames in a horizontal strip with generous white margins — distinct from grid gallery layouts.',
+    aspectRatio: '1:1',
+    canvasWidth: 2400,
+    canvasHeight: 2400,
+    supportedPrintSizes: ['8x8"', '12x12"', '16x16"'],
+    photoCount: 3,
+    tags: ['black-and-white', 'monochrome', 'triptych', 'square', 'minimal'],
+    version: 1,
+    background: {
+      type: 'color',
+      color: '#fafafa',
+    },
+    photoSlots: [
+      { id: 'sq1', label: 'Left', x: 0.06, y: 0.34, width: 0.28, height: 0.28, shape: 'rectangle', borderWidth: 2, borderColor: '#18181b', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.bw[10] },
+      { id: 'sq2', label: 'Center', x: 0.36, y: 0.34, width: 0.28, height: 0.28, shape: 'rectangle', borderWidth: 2, borderColor: '#18181b', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.bw[11] },
+      { id: 'sq3', label: 'Right', x: 0.66, y: 0.34, width: 0.28, height: 0.28, shape: 'rectangle', borderWidth: 2, borderColor: '#18181b', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.portraits[8] },
+    ],
+    textElements: [
+      { id: 't1', x: 0.5, y: 0.18, text: 'THREE FRAMES', fontFamily: 'Montserrat', fontSize: 28, fontWeight: '700', fill: '#18181b', align: 'center', letterSpacing: 8, zIndex: 3 },
+      { id: 't2', x: 0.5, y: 0.72, text: 'MONOCHROME STUDY', fontFamily: 'Playfair Display', fontSize: 36, fontStyle: 'italic', fill: '#3f3f46', align: 'center', zIndex: 3 },
+    ],
+  },
+];

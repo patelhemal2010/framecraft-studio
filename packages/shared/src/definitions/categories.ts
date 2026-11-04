@@ -1,0 +1,173 @@
+import { TemplateCategory } from '../types/template.js';
+
+export interface CategoryMetadata {
+  id: TemplateCategory;
+  name: string;
+  shortLabel: string;
+  description: string;
+  iconName: string;
+  popularTags: string[];
+}
+
+export const TEMPLATE_CATEGORIES: CategoryMetadata[] = [
+  {
+    id: 'birthday',
+    name: 'Birthday Collages',
+    shortLabel: 'Birthday',
+    description: 'Chalkboard keepsakes, party milestones, and photo gift frames.',
+    iconName: 'Cake',
+    popularTags: ['birthday', 'party', 'celebration', 'chalkboard', 'polaroid'],
+  },
+  {
+    id: 'wedding',
+    name: 'Wedding Collages',
+    shortLabel: 'Wedding',
+    description: 'Timeless wedding triptychs, vow displays, and romantic memory albums.',
+    iconName: 'Sparkles',
+    popularTags: ['wedding', 'vows', 'ceremony', 'bride', 'groom', 'vintage'],
+  },
+  {
+    id: 'anniversary',
+    name: 'Anniversary Frames',
+    shortLabel: 'Anniversary',
+    description: 'Yearly milestone commemorations, heart collages, and romantic keepsakes.',
+    iconName: 'Heart',
+    popularTags: ['anniversary', 'romance', 'couple', 'milestone', 'love'],
+  },
+  {
+    id: 'baby',
+    name: 'Baby and Newborn',
+    shortLabel: 'Baby & Kids',
+    description: 'Birth announcements, monthly milestone trackers, and nursery wall art.',
+    iconName: 'Baby',
+    popularTags: ['baby', 'newborn', 'nursery', 'lotus', 'cute'],
+  },
+  {
+    id: 'first-birthday',
+    name: 'First Birthday',
+    shortLabel: '1st Birthday',
+    description: 'Milestone stats, "Wild One" themes, and cake smash memory collages.',
+    iconName: 'Crown',
+    popularTags: ['first-birthday', 'one', 'cake-smash', 'wild-one', 'milestones'],
+  },
+  {
+    id: 'family',
+    name: 'Family Memories',
+    shortLabel: 'Family',
+    description: 'Heirloom family gallery walls, generations posters, and reunion collages.',
+    iconName: 'Users',
+    popularTags: ['family', 'generations', 'reunion', 'gallery-wall', 'home'],
+  },
+  {
+    id: 'couple',
+    name: 'Couple Photos',
+    shortLabel: 'Couple',
+    description: 'Photostrips, cinema film reels, and intimate duo memory boards.',
+    iconName: 'HeartHandshake',
+    popularTags: ['couple', 'duo', 'photostrip', 'filmstrip', 'romance'],
+  },
+  {
+    id: 'friends',
+    name: 'Friends and Friendship',
+    shortLabel: 'Friends',
+    description: 'Besties washi grids, squad goals magazine covers, and road trip clusters.',
+    iconName: 'Smile',
+    popularTags: ['friends', 'besties', 'squad', 'magazine', 'washi'],
+  },
+  {
+    id: 'travel',
+    name: 'Travel Memories',
+    shortLabel: 'Travel',
+    description: 'Passport stamp albums, beach vacation triptychs, and vintage airmail.',
+    iconName: 'Compass',
+    popularTags: ['travel', 'wanderlust', 'vacation', 'passport', 'postcard'],
+  },
+  {
+    id: 'scrapbook',
+    name: 'Scrapbook Collages',
+    shortLabel: 'Scrapbook',
+    description: 'Torn kraft paper, dried pressed flowers, washi tape, and ephemera textures.',
+    iconName: 'BookOpen',
+    popularTags: ['scrapbook', 'kraft-paper', 'vintage', 'washi', 'aesthetic'],
+  },
+  {
+    id: 'polaroid',
+    name: 'Polaroid Collages',
+    shortLabel: 'Polaroid',
+    description: 'Asymmetric tilted polaroids, fairy lights strings, and retro camera prints.',
+    iconName: 'Camera',
+    popularTags: ['polaroid', 'retro', 'tilted', 'fairy-lights', 'mosaic'],
+  },
+  {
+    id: 'floral',
+    name: 'Floral and Aesthetic',
+    shortLabel: 'Floral & Nature',
+    description: 'Botanical herbariums, cherry blossom arches, and wildflower wreaths.',
+    iconName: 'Flower2',
+    popularTags: ['floral', 'botanical', 'wildflowers', 'blossoms', 'nature'],
+  },
+  {
+    id: 'calendar',
+    name: 'Calendar Photo Frames',
+    shortLabel: 'Calendar',
+    description: 'Interactive printable calendars with highlighted birthdays and anniversaries.',
+    iconName: 'CalendarDays',
+    popularTags: ['calendar', 'dates', 'highlight', 'desk-calendar', 'year-in-review'],
+  },
+  {
+    id: 'festival',
+    name: 'Festival and Celebration',
+    shortLabel: 'Festivals',
+    description: 'Holiday celebrations, Diwali diyas, Christmas wreaths, and carnival confetti.',
+    iconName: 'PartyPopper',
+    popularTags: ['festival', 'holiday', 'christmas', 'diwali', 'celebration'],
+  },
+  {
+    id: 'graduation',
+    name: 'Graduation',
+    shortLabel: 'Graduation',
+    description: 'Senior portraits, cap & diploma achievements, and academic milestones.',
+    iconName: 'GraduationCap',
+    popularTags: ['graduation', 'diploma', 'class-of', 'achievement', 'academic'],
+  },
+  {
+    id: 'parents-day',
+    name: "Mother's & Father's Day",
+    shortLabel: "Parents' Day",
+    description: 'Tribute posters for mom and dad, heartfelt letters, and family legacies.',
+    iconName: 'Award',
+    popularTags: ['parents', 'mom', 'dad', 'mothers-day', 'fathers-day'],
+  },
+  {
+    id: 'valentines',
+    name: "Valentine's Day",
+    shortLabel: 'Valentine',
+    description: 'Burgundy love notes, cupid arrow photo strips, and heart cluster frames.',
+    iconName: 'Flame',
+    popularTags: ['valentines', 'love', 'hearts', 'cupid', 'sweetheart'],
+  },
+  {
+    id: 'minimalist',
+    name: 'Minimalist Collages',
+    shortLabel: 'Minimalist',
+    description: 'Swiss modernist grids, zen whitespace, and clean fine-line editorial layouts.',
+    iconName: 'LayoutGrid',
+    popularTags: ['minimalist', 'clean', 'swiss', 'zen', 'modern'],
+  },
+  {
+    id: 'black-and-white',
+    name: 'Black and White Collages',
+    shortLabel: 'Black & White',
+    description: 'High-contrast monochrome, vintage film contact sheets, and darkroom prints.',
+    iconName: 'Contrast',
+    popularTags: ['monochrome', 'black-and-white', 'darkroom', 'contrast', 'film'],
+  },
+  {
+    id: 'custom-frames',
+    name: 'Custom Photo Frames',
+    shortLabel: 'Custom Frames',
+    description: 'Ornate baroque gold frames, weathered barnboard wood, and floating acrylic glass.',
+    iconName: 'Frame',
+    popularTags: ['frames', 'baroque', 'wood', 'acrylic', 'gallery'],
+  },
+];

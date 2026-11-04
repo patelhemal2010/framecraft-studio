@@ -1,0 +1,117 @@
+import { TemplateDefinition } from '../../types/template.js';
+import { SAMPLE_IMAGES } from '../sample-images.js';
+
+export const BABY_TEMPLATES: TemplateDefinition[] = [
+  {
+    id: 'baby-pink-lotus-botanical',
+    slug: 'pink-lotus-botanical-collage',
+    name: 'Pink Lotus Botanical Keepsake',
+    category: 'baby',
+    description: 'Delicate watercolor pink lotus corner blossoms on textured vintage parchment with 4 aesthetic portrait photo frames.',
+    aspectRatio: '4:5',
+    canvasWidth: 2400,
+    canvasHeight: 3000,
+    supportedPrintSizes: ['8x10"', '16x20"', 'A4', '4x6"'],
+    photoCount: 4,
+    tags: ['baby', 'lotus', 'botanical', 'watercolor', 'pink', 'pinterest'],
+    version: 1,
+    background: {
+      type: 'color',
+      color: '#f9f6f0',
+    },
+    decorativeElements: [
+      { id: 'lotus-top-left', type: 'lotus', x: 0.04, y: 0.02, width: 0.32, height: 0.22, zIndex: 3 },
+      { id: 'lotus-mid', type: 'lotus', x: 0.44, y: 0.42, width: 0.16, height: 0.12, zIndex: 3 },
+      { id: 'lotus-bottom-right', type: 'lotus', x: 0.64, y: 0.74, width: 0.32, height: 0.22, zIndex: 3 },
+      { id: 'lotus-bottom-left', type: 'lotus', x: 0.06, y: 0.82, width: 0.16, height: 0.12, zIndex: 3 },
+    ],
+    photoSlots: [
+      { id: 'slot-1', label: 'Photo Top Right', x: 0.48, y: 0.10, width: 0.42, height: 0.28, shape: 'rounded', borderRadius: 8, borderWidth: 5, borderColor: '#ffffff', shadowBlur: 16, shadowColor: 'rgba(0,0,0,0.12)', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.babies[0] },
+      { id: 'slot-2', label: 'Photo Mid Left', x: 0.10, y: 0.28, width: 0.38, height: 0.26, shape: 'rounded', borderRadius: 8, borderWidth: 5, borderColor: '#ffffff', shadowBlur: 16, shadowColor: 'rgba(0,0,0,0.12)', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.babies[1] },
+      { id: 'slot-3', label: 'Photo Mid Right', x: 0.54, y: 0.44, width: 0.38, height: 0.26, shape: 'rounded', borderRadius: 8, borderWidth: 5, borderColor: '#ffffff', shadowBlur: 16, shadowColor: 'rgba(0,0,0,0.12)', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.babies[2] },
+      { id: 'slot-4', label: 'Photo Bottom Left', x: 0.12, y: 0.58, width: 0.38, height: 0.26, shape: 'rounded', borderRadius: 8, borderWidth: 5, borderColor: '#ffffff', shadowBlur: 16, shadowColor: 'rgba(0,0,0,0.12)', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.babies[3] },
+    ],
+    textElements: [
+      { id: 'text-1', x: 0.5, y: 0.94, text: 'PURE LITTLE MIRACLE', fontFamily: 'Playfair Display', fontSize: 36, fontWeight: '700', fill: '#9d174d', align: 'center', letterSpacing: 4, zIndex: 3 },
+    ],
+  },
+  {
+    id: 'baby-first-year-desk-calendar',
+    slug: 'baby-first-year-calendar-keepsake',
+    name: "Baby's First Year Milestone Calendar",
+    category: 'baby',
+    description: 'Milestone calendar frame with cute baby portrait pinned by pastel washi tape and monthly memory notes.',
+    aspectRatio: '4:5',
+    canvasWidth: 2400,
+    canvasHeight: 3000,
+    supportedPrintSizes: ['8x10"', '16x20"', 'A4'],
+    photoCount: 3,
+    tags: ['baby', 'first-year', 'milestone', 'calendar', 'keepsake'],
+    version: 1,
+    background: {
+      type: 'color',
+      color: '#fffdfa',
+    },
+    calendarConfig: {
+      month: 5,
+      year: 2026,
+      weekStart: 'sun',
+      highlightedDates: [
+        { day: 12, style: 'star', color: '#f59e0b', label: '1st Step' },
+      ],
+      x: 0.12,
+      y: 0.58,
+      width: 0.76,
+      height: 0.36,
+      headerColor: '#b45309',
+      dayNumberColor: '#78716c',
+      accentColor: '#f59e0b',
+      fontFamily: 'Montserrat',
+      showMonthHeader: true,
+      zIndex: 2,
+    },
+    decorativeElements: [
+      { id: 'tape-top', type: 'tape', x: 0.44, y: 0.08, width: 0.16, height: 0.045, color: '#fef08a', rotation: -3, zIndex: 4 },
+    ],
+    photoSlots: [
+      { id: 'slot-hero', label: 'Hero Milestone', x: 0.28, y: 0.10, width: 0.44, height: 0.42, shape: 'polaroid', borderWidth: 6, borderColor: '#ffffff', shadowBlur: 20, shadowColor: 'rgba(0,0,0,0.14)', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.babies[4] },
+      { id: 'slot-mini-1', label: 'Milestone 1', x: 0.06, y: 0.18, width: 0.20, height: 0.20, shape: 'rounded', borderRadius: 12, borderWidth: 4, borderColor: '#ffffff', shadowBlur: 14, shadowColor: 'rgba(0,0,0,0.12)', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.babies[5] },
+      { id: 'slot-mini-2', label: 'Milestone 2', x: 0.74, y: 0.18, width: 0.20, height: 0.20, shape: 'rounded', borderRadius: 12, borderWidth: 4, borderColor: '#ffffff', shadowBlur: 14, shadowColor: 'rgba(0,0,0,0.12)', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.babies[6] },
+    ],
+    textElements: [
+      { id: 'text-1', x: 0.5, y: 0.04, text: 'GROWING SO FAST', fontFamily: 'Montserrat', fontSize: 28, fontWeight: '700', fill: '#78716c', align: 'center', letterSpacing: 4, zIndex: 3 },
+    ],
+  },
+  {
+    id: 'baby-sweet-dreams-scrapbook',
+    slug: 'sweet-dreams-bear-baby-scrapbook',
+    name: 'Sweet Dreams Pastel Baby Scrapbook',
+    category: 'baby',
+    description: 'Pastel dreamscape with bear doodles, sleeping moon, twinkling stars, and rounded photo memories.',
+    aspectRatio: '4:5',
+    canvasWidth: 2400,
+    canvasHeight: 3000,
+    supportedPrintSizes: ['8x10"', '16x20"', 'A4', '4x6"'],
+    photoCount: 3,
+    tags: ['baby', 'pastel', 'bear', 'moon', 'stars', 'sweet'],
+    version: 1,
+    background: {
+      type: 'color',
+      color: '#fff5f7',
+    },
+    decorativeElements: [
+      { id: 'doodle-bear', type: 'doodle', x: 0.72, y: 0.10, width: 0.20, height: 0.20, zIndex: 3 },
+      { id: 'heart-1', type: 'heart', x: 0.12, y: 0.14, width: 0.06, height: 0.06, color: '#f43f5e', zIndex: 3 },
+      { id: 'heart-2', type: 'heart', x: 0.82, y: 0.80, width: 0.05, height: 0.05, color: '#f43f5e', zIndex: 3 },
+    ],
+    photoSlots: [
+      { id: 'slot-1', label: 'Dream Snap 1', x: 0.10, y: 0.24, width: 0.44, height: 0.32, shape: 'rounded', borderRadius: 24, borderWidth: 6, borderColor: '#ffffff', shadowBlur: 18, shadowColor: 'rgba(0,0,0,0.1)', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.babies[7] },
+      { id: 'slot-2', label: 'Dream Snap 2', x: 0.56, y: 0.34, width: 0.36, height: 0.28, shape: 'rounded', borderRadius: 24, borderWidth: 6, borderColor: '#ffffff', shadowBlur: 18, shadowColor: 'rgba(0,0,0,0.1)', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.babies[8] },
+      { id: 'slot-3', label: 'Dream Snap 3', x: 0.24, y: 0.60, width: 0.52, height: 0.28, shape: 'rounded', borderRadius: 24, borderWidth: 6, borderColor: '#ffffff', shadowBlur: 18, shadowColor: 'rgba(0,0,0,0.1)', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.babies[9] },
+    ],
+    textElements: [
+      { id: 'text-1', x: 0.5, y: 0.08, text: 'SWEET DREAMS LITTLE ONE', fontFamily: 'Caveat', fontSize: 48, fontWeight: 'bold', fill: '#e11d48', align: 'center', zIndex: 3 },
+      { id: 'text-2', x: 0.5, y: 0.94, text: 'loved to the moon and back ♡', fontFamily: 'Caveat', fontSize: 34, fill: '#9f1239', align: 'center', zIndex: 3 },
+    ],
+  },
+];

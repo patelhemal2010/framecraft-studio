@@ -1,0 +1,101 @@
+import { TemplateDefinition } from '../../types/template.js';
+import { SAMPLE_IMAGES } from '../sample-images.js';
+
+export const FESTIVAL_TEMPLATES: TemplateDefinition[] = [
+  {
+    id: 'festival-diwali-golden-lights',
+    slug: 'golden-diwali-festival-lights',
+    name: 'Festival of Lights Diya & Sparkler Keepsake',
+    category: 'festival',
+    description: 'Deep midnight indigo background illuminated by warm golden sparkles and 4 framed festive family portraits.',
+    aspectRatio: '4:5',
+    canvasWidth: 2400,
+    canvasHeight: 3000,
+    supportedPrintSizes: ['8x10"', '16x20"', 'A4'],
+    photoCount: 4,
+    tags: ['festival', 'diwali', 'lights', 'celebration', 'gold'],
+    version: 1,
+    background: {
+      type: 'color',
+      color: '#0f172a',
+    },
+    decorativeElements: [
+      { id: 'star-1', type: 'star', x: 0.12, y: 0.10, width: 0.08, height: 0.08, color: '#fef08a', zIndex: 3 },
+      { id: 'star-2', type: 'star', x: 0.82, y: 0.10, width: 0.08, height: 0.08, color: '#fef08a', zIndex: 3 },
+      { id: 'crown-glow', type: 'crown', x: 0.46, y: 0.90, width: 0.08, height: 0.05, zIndex: 3 },
+    ],
+    photoSlots: [
+      { id: 'f-1', label: 'Diya Lighting', x: 0.10, y: 0.18, width: 0.38, height: 0.32, shape: 'rounded', borderRadius: 16, borderWidth: 6, borderColor: '#fef08a', shadowBlur: 20, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.festivals[0] },
+      { id: 'f-2', label: 'Sparkler Fun', x: 0.52, y: 0.18, width: 0.38, height: 0.32, shape: 'rounded', borderRadius: 16, borderWidth: 6, borderColor: '#fef08a', shadowBlur: 20, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.festivals[1] },
+      { id: 'f-3', label: 'Family Sweets', x: 0.10, y: 0.54, width: 0.38, height: 0.32, shape: 'rounded', borderRadius: 16, borderWidth: 6, borderColor: '#fef08a', shadowBlur: 20, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.festivals[2] },
+      { id: 'f-4', label: 'Festive Gathering', x: 0.52, y: 0.54, width: 0.38, height: 0.32, shape: 'rounded', borderRadius: 16, borderWidth: 6, borderColor: '#fef08a', shadowBlur: 20, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.festivals[3] },
+    ],
+    textElements: [
+      { id: 't1', x: 0.5, y: 0.06, text: 'HAPPY DIWALI • FESTIVAL OF LIGHTS', fontFamily: 'Playfair Display', fontSize: 44, fontWeight: '700', fill: '#fef08a', align: 'center', letterSpacing: 4, zIndex: 3 },
+      { id: 't2', x: 0.5, y: 0.94, text: 'May your year shine with prosperity, joy, and peace ✨', fontFamily: 'Caveat', fontSize: 34, fill: '#fde047', align: 'center', zIndex: 3 },
+    ],
+  },
+  {
+    id: 'festival-christmas-holiday-wreath',
+    slug: 'holiday-cheer-christmas-collage',
+    name: 'Holiday Cheer Pine & Berry Christmas Frame',
+    category: 'festival',
+    description: 'Warm forest green holiday collage with 5 photos, pine garland accents, and golden festive greetings.',
+    aspectRatio: '4:5',
+    canvasWidth: 2400,
+    canvasHeight: 3000,
+    supportedPrintSizes: ['8x10"', '16x20"', 'A4'],
+    photoCount: 5,
+    tags: ['festival', 'christmas', 'holiday', 'winter', 'cheer'],
+    version: 1,
+    background: {
+      type: 'color',
+      color: '#064e3b',
+    },
+    photoSlots: [
+      { id: 'x-center', label: 'Christmas Morning', x: 0.28, y: 0.20, width: 0.44, height: 0.40, shape: 'polaroid', borderWidth: 6, borderColor: '#ffffff', shadowBlur: 20, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.festivals[4] },
+      { id: 'x-1', label: 'Trimming Tree', x: 0.06, y: 0.16, width: 0.20, height: 0.20, shape: 'rounded', borderRadius: 12, borderWidth: 4, borderColor: '#ffffff', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.festivals[5] },
+      { id: 'x-2', label: 'Hot Cocoa', x: 0.74, y: 0.16, width: 0.20, height: 0.20, shape: 'rounded', borderRadius: 12, borderWidth: 4, borderColor: '#ffffff', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.festivals[6] },
+      { id: 'x-3', label: 'Gift Exchange', x: 0.12, y: 0.64, width: 0.36, height: 0.26, shape: 'rounded', borderRadius: 12, borderWidth: 4, borderColor: '#ffffff', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.festivals[7] },
+      { id: 'x-4', label: 'Snowman Day', x: 0.52, y: 0.64, width: 0.36, height: 0.26, shape: 'rounded', borderRadius: 12, borderWidth: 4, borderColor: '#ffffff', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[0] },
+    ],
+    textElements: [
+      { id: 't1', x: 0.5, y: 0.06, text: 'MERRY & BRIGHT', fontFamily: 'Playfair Display', fontSize: 54, fontWeight: '700', fill: '#fef08a', align: 'center', letterSpacing: 6, zIndex: 3 },
+      { id: 't2', x: 0.5, y: 0.94, text: 'Wishing you peace, joy, and love this Christmas season', fontFamily: 'Caveat', fontSize: 34, fill: '#fef08a', align: 'center', zIndex: 3 },
+    ],
+  },
+  {
+    id: 'festival-carnival-confetti-splash',
+    slug: 'carnival-confetti-celebration-poster',
+    name: 'Colorful Confetti & Balloon Celebration',
+    category: 'festival',
+    description: 'Vibrant celebration collage with 6 rounded photo frames, celebratory ribbons, and joyful party typography.',
+    aspectRatio: '4:5',
+    canvasWidth: 2400,
+    canvasHeight: 3000,
+    supportedPrintSizes: ['8x10"', '16x20"', 'A4'],
+    photoCount: 6,
+    tags: ['festival', 'party', 'celebration', 'confetti', 'colors'],
+    version: 1,
+    background: {
+      type: 'color',
+      color: '#fffbeb',
+    },
+    decorativeElements: [
+      { id: 'star-c1', type: 'star', x: 0.10, y: 0.08, width: 0.08, height: 0.08, color: '#f59e0b', zIndex: 3 },
+      { id: 'star-c2', type: 'star', x: 0.82, y: 0.08, width: 0.08, height: 0.08, color: '#ec4899', zIndex: 3 },
+    ],
+    photoSlots: [
+      { id: 'cp1', label: 'Party 1', x: 0.08, y: 0.16, width: 0.38, height: 0.22, shape: 'rounded', borderRadius: 16, borderWidth: 4, borderColor: '#ffffff', shadowBlur: 14, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[1] },
+      { id: 'cp2', label: 'Party 2', x: 0.54, y: 0.16, width: 0.38, height: 0.22, shape: 'rounded', borderRadius: 16, borderWidth: 4, borderColor: '#ffffff', shadowBlur: 14, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[2] },
+      { id: 'cp3', label: 'Party 3', x: 0.08, y: 0.42, width: 0.38, height: 0.22, shape: 'rounded', borderRadius: 16, borderWidth: 4, borderColor: '#ffffff', shadowBlur: 14, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[3] },
+      { id: 'cp4', label: 'Party 4', x: 0.54, y: 0.42, width: 0.38, height: 0.22, shape: 'rounded', borderRadius: 16, borderWidth: 4, borderColor: '#ffffff', shadowBlur: 14, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[4] },
+      { id: 'cp5', label: 'Party 5', x: 0.08, y: 0.68, width: 0.38, height: 0.22, shape: 'rounded', borderRadius: 16, borderWidth: 4, borderColor: '#ffffff', shadowBlur: 14, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[5] },
+      { id: 'cp6', label: 'Party 6', x: 0.54, y: 0.68, width: 0.38, height: 0.22, shape: 'rounded', borderRadius: 16, borderWidth: 4, borderColor: '#ffffff', shadowBlur: 14, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[6] },
+    ],
+    textElements: [
+      { id: 'text-1', x: 0.5, y: 0.06, text: 'LET THE CELEBRATION BEGIN!', fontFamily: 'Montserrat', fontSize: 34, fontWeight: '700', fill: '#d97706', align: 'center', letterSpacing: 4, zIndex: 3 },
+      { id: 'text-2', x: 0.5, y: 0.94, text: 'Cheers to great music, bright colors, and joyful friends!', fontFamily: 'Caveat', fontSize: 32, fill: '#b45309', align: 'center', zIndex: 3 },
+    ],
+  },
+];

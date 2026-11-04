@@ -1,0 +1,101 @@
+import { TemplateDefinition } from '../../types/template.js';
+import { SAMPLE_IMAGES } from '../sample-images.js';
+
+export const FRIENDS_TEMPLATES: TemplateDefinition[] = [
+  {
+    id: 'friends-forever-washi-grid',
+    slug: 'besties-washi-tape-grid',
+    name: 'Besties Washi Tape Memory Grid',
+    category: 'friends',
+    description: 'Playful washi-tape pinned 6-polaroid collage celebrating lifelong friendship, laughter, and inside jokes.',
+    aspectRatio: '4:5',
+    canvasWidth: 2400,
+    canvasHeight: 3000,
+    supportedPrintSizes: ['8x10"', '16x20"', 'A4'],
+    photoCount: 6,
+    tags: ['friends', 'besties', 'washi', 'polaroid', 'grid'],
+    version: 1,
+    background: {
+      type: 'color',
+      color: '#f8fafc',
+    },
+    decorativeElements: [
+      { id: 'tape-1', type: 'tape', x: 0.16, y: 0.12, width: 0.14, height: 0.04, color: '#fbcfe8', rotation: -6, zIndex: 4 },
+      { id: 'tape-2', type: 'tape', x: 0.70, y: 0.12, width: 0.14, height: 0.04, color: '#fed7aa', rotation: 4, zIndex: 4 },
+      { id: 'heart-1', type: 'heart', x: 0.48, y: 0.50, width: 0.05, height: 0.05, color: '#ec4899', zIndex: 3 },
+    ],
+    photoSlots: [
+      { id: 'p1', label: 'Pic 1', x: 0.08, y: 0.16, width: 0.38, height: 0.22, shape: 'polaroid', rotation: -2, borderWidth: 4, borderColor: '#ffffff', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[0] },
+      { id: 'p2', label: 'Pic 2', x: 0.54, y: 0.16, width: 0.38, height: 0.22, shape: 'polaroid', rotation: 3, borderWidth: 4, borderColor: '#ffffff', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[1] },
+      { id: 'p3', label: 'Pic 3', x: 0.08, y: 0.42, width: 0.38, height: 0.22, shape: 'polaroid', rotation: 2, borderWidth: 4, borderColor: '#ffffff', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[2] },
+      { id: 'p4', label: 'Pic 4', x: 0.54, y: 0.42, width: 0.38, height: 0.22, shape: 'polaroid', rotation: -3, borderWidth: 4, borderColor: '#ffffff', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[3] },
+      { id: 'p5', label: 'Pic 5', x: 0.08, y: 0.68, width: 0.38, height: 0.22, shape: 'polaroid', rotation: -1, borderWidth: 4, borderColor: '#ffffff', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[4] },
+      { id: 'p6', label: 'Pic 6', x: 0.54, y: 0.68, width: 0.38, height: 0.22, shape: 'polaroid', rotation: 2, borderWidth: 4, borderColor: '#ffffff', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[5] },
+    ],
+    textElements: [
+      { id: 'text-1', x: 0.5, y: 0.06, text: 'BEST FRIENDS FOREVER', fontFamily: 'Montserrat', fontSize: 36, fontWeight: '700', fill: '#0f172a', align: 'center', letterSpacing: 4, zIndex: 3 },
+      { id: 'text-2', x: 0.5, y: 0.94, text: 'we did not realize we were making memories, we just knew we were having fun ♡', fontFamily: 'Caveat', fontSize: 30, fill: '#64748b', align: 'center', zIndex: 3 },
+    ],
+  },
+  {
+    id: 'friends-squad-goals-magazine',
+    slug: 'squad-goals-editorial-magazine',
+    name: 'Editorial Magazine Cover Squad Collage',
+    category: 'friends',
+    description: 'High-fashion editorial magazine cover design featuring the squad with bold masthead typography and feature stories.',
+    aspectRatio: '4:5',
+    canvasWidth: 2400,
+    canvasHeight: 3000,
+    supportedPrintSizes: ['8x10"', '16x20"', 'A4'],
+    photoCount: 4,
+    tags: ['friends', 'magazine', 'editorial', 'squad', 'fashion'],
+    version: 1,
+    background: {
+      type: 'color',
+      color: '#ffffff',
+    },
+    photoSlots: [
+      { id: 'hero-mag', label: 'Cover Hero', x: 0.08, y: 0.16, width: 0.56, height: 0.68, shape: 'rectangle', borderWidth: 1, borderColor: '#e2e8f0', zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[6] },
+      { id: 'side-1', label: 'Story 1', x: 0.68, y: 0.18, width: 0.24, height: 0.20, shape: 'rounded', borderRadius: 8, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[7] },
+      { id: 'side-2', label: 'Story 2', x: 0.68, y: 0.42, width: 0.24, height: 0.20, shape: 'rounded', borderRadius: 8, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[8] },
+      { id: 'side-3', label: 'Story 3', x: 0.68, y: 0.66, width: 0.24, height: 0.20, shape: 'rounded', borderRadius: 8, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.friends[9] },
+    ],
+    textElements: [
+      { id: 'text-title', x: 0.5, y: 0.04, text: 'VOGUE • SQUAD EDITION', fontFamily: 'Playfair Display', fontSize: 58, fontWeight: '700', fill: '#09090b', align: 'center', letterSpacing: 8, zIndex: 3 },
+      { id: 'text-quote', x: 0.36, y: 0.88, text: 'THE UNSTOPPABLE CREW — ISSUE NO. 26', fontFamily: 'Montserrat', fontSize: 20, fontWeight: '600', fill: '#71717a', align: 'center', letterSpacing: 3, zIndex: 3 },
+    ],
+  },
+  {
+    id: 'friends-polaroid-corkboard',
+    slug: 'friends-corkboard-polaroid-cluster',
+    name: 'Tilted Polaroid Memory Cluster',
+    category: 'friends',
+    description: 'Casual scrapbook layout of 5 artfully overlapped tilted polaroids on oatmeal paper with heart doodle accents.',
+    aspectRatio: '4:5',
+    canvasWidth: 2400,
+    canvasHeight: 3000,
+    supportedPrintSizes: ['8x10"', '16x20"', 'A4'],
+    photoCount: 5,
+    tags: ['friends', 'polaroids', 'cluster', 'casual', 'aesthetic'],
+    version: 1,
+    background: {
+      type: 'color',
+      color: '#f4ede4',
+    },
+    decorativeElements: [
+      { id: 'doodle-1', type: 'doodle', x: 0.12, y: 0.08, width: 0.10, height: 0.10, zIndex: 3 },
+      { id: 'doodle-2', type: 'doodle', x: 0.80, y: 0.84, width: 0.10, height: 0.10, zIndex: 3 },
+    ],
+    photoSlots: [
+      { id: 'c1', label: 'Snap 1', x: 0.10, y: 0.18, width: 0.36, height: 0.34, shape: 'polaroid', rotation: -7, borderWidth: 5, borderColor: '#ffffff', shadowBlur: 20, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.portraits[0] },
+      { id: 'c2', label: 'Snap 2', x: 0.54, y: 0.14, width: 0.36, height: 0.34, shape: 'polaroid', rotation: 6, borderWidth: 5, borderColor: '#ffffff', shadowBlur: 20, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.portraits[1] },
+      { id: 'c3', label: 'Snap 3', x: 0.32, y: 0.38, width: 0.38, height: 0.36, shape: 'polaroid', rotation: -2, borderWidth: 6, borderColor: '#ffffff', shadowBlur: 24, zIndex: 4, defaultSampleUrl: SAMPLE_IMAGES.portraits[2] },
+      { id: 'c4', label: 'Snap 4', x: 0.08, y: 0.58, width: 0.36, height: 0.34, shape: 'polaroid', rotation: 5, borderWidth: 5, borderColor: '#ffffff', shadowBlur: 20, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.portraits[3] },
+      { id: 'c5', label: 'Snap 5', x: 0.54, y: 0.58, width: 0.36, height: 0.34, shape: 'polaroid', rotation: -5, borderWidth: 5, borderColor: '#ffffff', shadowBlur: 20, zIndex: 2, defaultSampleUrl: SAMPLE_IMAGES.portraits[4] },
+    ],
+    textElements: [
+      { id: 'text-1', x: 0.5, y: 0.06, text: 'GOOD TIMES & CRAZY FRIENDS', fontFamily: 'Playfair Display', fontSize: 38, fontWeight: '700', fill: '#451a03', align: 'center', zIndex: 3 },
+      { id: 'text-2', x: 0.5, y: 0.94, text: 'Side by side or miles apart, real friends are always close to the heart', fontFamily: 'Caveat', fontSize: 32, fill: '#78350f', align: 'center', zIndex: 3 },
+    ],
+  },
+];
