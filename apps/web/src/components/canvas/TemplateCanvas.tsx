@@ -83,6 +83,36 @@ export const TemplateCanvas = forwardRef<Konva.Stage, TemplateCanvasProps>(
       return initial;
     }, [project?.assignedPhotos, slots]);
 
+    // Unified elements sorted by zIndex so background panels/mats (zIndex < 2) render BEHIND photos,
+    // photos (zIndex 2) render in the middle, and foreground overlays/accents (zIndex > 2) render ON TOP.
+    const renderItems = useMemo(() => {
+      type RenderItem =
+        | { kind: 'slot'; data: typeof slots[0]; zIndex: number }
+        | { kind: 'calendar'; data: NonNullable<typeof calendarConfig>; zIndex: number }
+        | { kind: 'decorative'; data: typeof decorativeElements[0]; zIndex: number }
+        | { kind: 'text'; data: typeof textElements[0]; zIndex: number };
+
+      const items: RenderItem[] = [];
+
+      slots.forEach((slot) => {
+        items.push({ kind: 'slot', data: slot, zIndex: slot.zIndex ?? 2 });
+      });
+
+      if (calendarConfig) {
+        items.push({ kind: 'calendar', data: calendarConfig, zIndex: (calendarConfig as any).zIndex ?? 2 });
+      }
+
+      decorativeElements.forEach((dec) => {
+        items.push({ kind: 'decorative', data: dec, zIndex: dec.zIndex ?? 1 });
+      });
+
+      textElements.forEach((txt) => {
+        items.push({ kind: 'text', data: txt, zIndex: txt.zIndex ?? 3 });
+      });
+
+      return items.sort((a, b) => a.zIndex - b.zIndex);
+    }, [slots, calendarConfig, decorativeElements, textElements]);
+
     // Scale-to-fit calculation
     let effectiveScale = scale ?? 1.0;
     let renderW = Math.round(canvasWidth * effectiveScale);
@@ -178,66 +208,66 @@ export const TemplateCanvas = forwardRef<Konva.Stage, TemplateCanvasProps>(
               />
             )}
 
-            {/* 2. Photo Slots in zIndex Order */}
-            {slots
-              .slice()
-              .sort((a, b) => a.zIndex - b.zIndex)
-              .map((slot) => (
-                <PhotoSlotRenderer
-                  key={slot.id}
-                  slot={slot}
-                  assigned={assignedPhotos[slot.id]}
-                  canvasWidth={canvasWidth}
-                  canvasHeight={canvasHeight}
-                  isSelected={interactive && selectedId === slot.id}
-                  onSelect={() => interactive && onSelect?.(slot.id, 'slot')}
-                  readOnly={!interactive}
-                />
-              ))}
-
-            {/* 3. Calendar Grid (if defined) */}
-            {calendarConfig && (
-              <CalendarRenderer
-                config={calendarConfig}
-                canvasWidth={canvasWidth}
-                canvasHeight={canvasHeight}
-                isSelected={interactive && selectedId === 'calendar'}
-                onSelect={() => interactive && onSelect?.('calendar', 'calendar')}
-                readOnly={!interactive}
-              />
-            )}
-
-            {/* 4. Decorative Elements in zIndex Order */}
-            {decorativeElements
-              .slice()
-              .sort((a, b) => a.zIndex - b.zIndex)
-              .map((dec) => (
-                <DecorativeRenderer
-                  key={dec.id}
-                  element={dec}
-                  canvasWidth={canvasWidth}
-                  canvasHeight={canvasHeight}
-                  isSelected={interactive && selectedId === dec.id}
-                  onSelect={() => interactive && onSelect?.(dec.id, 'decorative')}
-                  readOnly={!interactive}
-                />
-              ))}
-
-            {/* 5. Text Elements in zIndex Order */}
-            {textElements
-              .slice()
-              .sort((a, b) => a.zIndex - b.zIndex)
-              .map((txt) => (
-                <TextElementRenderer
-                  key={txt.id}
-                  element={txt}
-                  canvasWidth={canvasWidth}
-                  canvasHeight={canvasHeight}
-                  isSelected={interactive && selectedId === txt.id}
-                  onSelect={() => interactive && onSelect?.(txt.id, 'text')}
-                  readOnly={!interactive}
-                />
-              ))}
+            {/* 2. Unified Elements in zIndex Order */}
+            {renderItems.map((item) => {
+              if (item.kind === 'slot') {
+                const slot = item.data;
+                return (
+                  <PhotoSlotRenderer
+                    key={slot.id}
+                    slot={slot}
+                    assigned={assignedPhotos[slot.id]}
+                    canvasWidth={canvasWidth}
+                    canvasHeight={canvasHeight}
+                    isSelected={interactive && selectedId === slot.id}
+                    onSelect={() => interactive && onSelect?.(slot.id, 'slot')}
+                    readOnly={!interactive}
+                  />
+                );
+              }
+              if (item.kind === 'calendar') {
+                return (
+                  <CalendarRenderer
+                    key="calendar"
+                    config={item.data}
+                    canvasWidth={canvasWidth}
+                    canvasHeight={canvasHeight}
+                    isSelected={interactive && selectedId === 'calendar'}
+                    onSelect={() => interactive && onSelect?.('calendar', 'calendar')}
+                    readOnly={!interactive}
+                  />
+                );
+              }
+              if (item.kind === 'decorative') {
+                const dec = item.data;
+                return (
+                  <DecorativeRenderer
+                    key={dec.id}
+                    element={dec}
+                    canvasWidth={canvasWidth}
+                    canvasHeight={canvasHeight}
+                    isSelected={interactive && selectedId === dec.id}
+                    onSelect={() => interactive && onSelect?.(dec.id, 'decorative')}
+                    readOnly={!interactive}
+                  />
+                );
+              }
+              if (item.kind === 'text') {
+                const txt = item.data;
+                return (
+                  <TextElementRenderer
+                    key={txt.id}
+                    element={txt}
+                    canvasWidth={canvasWidth}
+                    canvasHeight={canvasHeight}
+                    isSelected={interactive && selectedId === txt.id}
+                    onSelect={() => interactive && onSelect?.(txt.id, 'text')}
+                    readOnly={!interactive}
+                  />
+                );
+              }
+              return null;
+            })}
           </Layer>
         </Stage>
       </div>

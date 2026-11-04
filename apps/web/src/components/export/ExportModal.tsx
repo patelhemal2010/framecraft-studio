@@ -79,10 +79,10 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose }) => 
     );
 
     await Promise.all(photoLoadPromises);
-    setExportProgress(50);
+    setExportProgress(60);
 
-    // 3. Render Photo Slots
-    for (const slot of project.slots.slice().sort((a, b) => a.zIndex - b.zIndex)) {
+    // Helpers to render each element type onto off-screen canvas
+    const drawSlot = (slot: (typeof project.slots)[0]) => {
       const sx = Math.round(slot.x * targetW);
       const sy = Math.round(slot.y * targetH);
       const sw = Math.round(slot.width * targetW);
@@ -186,13 +186,9 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose }) => 
       }
 
       ctx.restore();
-    }
+    };
 
-    setExportProgress(75);
-
-    // 4. Render Calendar Config (if present)
-    if (project.calendarConfig) {
-      const cal = project.calendarConfig;
+    const drawCalendar = (cal: NonNullable<typeof project.calendarConfig>) => {
       const cx = Math.round(cal.x * targetW);
       const cy = Math.round(cal.y * targetH);
       const cw = Math.round(cal.width * targetW);
@@ -257,11 +253,9 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose }) => 
       });
 
       ctx.restore();
-    }
+    };
 
-    // 5. Render Decorative Elements
-    setExportProgress(80);
-    for (const dec of project.decorativeElements.slice().sort((a, b) => a.zIndex - b.zIndex)) {
+    const drawDecorative = (dec: (typeof project.decorativeElements)[0]) => {
       const dx = Math.round(dec.x * targetW);
       const dy = Math.round(dec.y * targetH);
       const dw = dec.width <= 1 ? Math.round(dec.width * targetW) : Math.round(dec.width * (targetW / project.canvasWidth));
@@ -275,7 +269,10 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose }) => 
       }
       ctx.globalAlpha = dec.opacity ?? 1;
 
-      if (dec.type === 'heart') {
+      if (dec.type === 'line') {
+        ctx.fillStyle = dec.color || '#cbd5e1';
+        ctx.fillRect(0, 0, dw, Math.max(2, dh));
+      } else if (dec.type === 'heart') {
         drawHeartPath(ctx, dw, dh);
         ctx.fillStyle = dec.color || '#f43f5e';
         ctx.fill();
@@ -321,11 +318,9 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose }) => 
       }
 
       ctx.restore();
-    }
+    };
 
-    // 6. Render Text Elements
-    setExportProgress(90);
-    for (const txt of project.textElements) {
+    const drawText = (txt: (typeof project.textElements)[0]) => {
       const tx = Math.round(txt.x * targetW);
       const ty = Math.round(txt.y * targetH);
       const scaledFontSize = Math.round(txt.fontSize * (targetW / project.canvasWidth));
@@ -339,6 +334,30 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose }) => 
 
       ctx.fillText(txt.text, tx, ty + scaledFontSize);
       ctx.restore();
+    };
+
+    // Collect all render items sorted by zIndex
+    type ExportItem =
+      | { kind: 'slot'; data: (typeof project.slots)[0]; zIndex: number }
+      | { kind: 'calendar'; data: NonNullable<typeof project.calendarConfig>; zIndex: number }
+      | { kind: 'decorative'; data: (typeof project.decorativeElements)[0]; zIndex: number }
+      | { kind: 'text'; data: (typeof project.textElements)[0]; zIndex: number };
+
+    const exportItems: ExportItem[] = [
+      ...project.slots.map((s) => ({ kind: 'slot' as const, data: s, zIndex: s.zIndex ?? 2 })),
+      ...(project.calendarConfig
+        ? [{ kind: 'calendar' as const, data: project.calendarConfig, zIndex: (project.calendarConfig as any).zIndex ?? 2 }]
+        : []),
+      ...project.decorativeElements.map((d) => ({ kind: 'decorative' as const, data: d, zIndex: d.zIndex ?? 1 })),
+      ...project.textElements.map((t) => ({ kind: 'text' as const, data: t, zIndex: t.zIndex ?? 3 })),
+    ].sort((a, b) => a.zIndex - b.zIndex);
+
+    // Render items in exact zIndex order
+    for (const item of exportItems) {
+      if (item.kind === 'slot') drawSlot(item.data);
+      else if (item.kind === 'calendar') drawCalendar(item.data);
+      else if (item.kind === 'decorative') drawDecorative(item.data);
+      else if (item.kind === 'text') drawText(item.data);
     }
 
     setExportProgress(100);
